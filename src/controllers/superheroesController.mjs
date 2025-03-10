@@ -1,13 +1,13 @@
 // es el encargado de las peticiones y mostrar el resultado mediante la views, se encarga de las solicitudes 
 
-import { obternerSuperheroePorId, obtenerTodosLosSuperheroes, buscarSuperheroesPorAtributo, obtenerSuperheroesMayoresDe30 } from "../services/superheroesService.mjs";
+import { obtenerSuperheroePorId, obtenerTodosLosSuperheroes, buscarSuperheroesPorAtributo, obtenerSuperheroesMayoresDe30 } from "../services/superheroesService.mjs";
 
 import { renderizarSuperheroe, renderizarListasSuperheroes } from "../views/responseView.mjs";
 
-export async function obternerSuperheroePorIdController(req, res) { 
+export async function obtenerSuperheroePorIdController(req, res) { 
     try {
         const { id } = req.params;
-        const superheroe = await obternerSuperheroePorId(id);
+        const superheroe = await obtenerSuperheroePorId(id);
         if (!superheroe) {
             return res.status(404).send({ mensaje:'Superheroe no encontrado' });
         }
