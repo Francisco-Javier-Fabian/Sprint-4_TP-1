@@ -1,6 +1,6 @@
 import SuperHeroRepository from "../repositories/SuperHeroRepository.mjs";
 
-export async function obternerSuperheroePorId(id) {
+export async function obtenerSuperheroePorId(id) {
     return await SuperHeroRepository.obtenerPorId(id);
 }
 
