@@ -16,3 +16,5 @@ router.get('/heroes/buscar/:atributo/:valor', buscarSuperheroesPorAtributoContro
 router.get('/heroes/buscar/mayores-30', obtenerSuperheroesMayoresDe30Controller);
 
 export default router;
+
+// Se cambia la ruta de heroes por que al ser la busqueda por cascada toma el id y no llega a mayores-30

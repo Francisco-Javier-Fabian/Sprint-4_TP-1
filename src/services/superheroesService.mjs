@@ -15,4 +15,4 @@ export async function buscarSuperheroesPorAtributo(atributo, valor) {
 export async function obtenerSuperheroesMayoresDe30() {
     return await SuperHeroRepository.obtenerMayoresDe30();
 }
-//cargDO de la logica de negocios valida que los datos tengan el tipo de dato nesesario en caso contrario lo transforma
+//cargado de la logica de negocios valida que los datos tengan el tipo de dato nesesario en caso contrario lo transforma
