@@ -37,6 +37,18 @@ class SuperHeroRepository extends IRepository {
         const heroeActualizado =  await SuperHero.findByIdAndUpdate( id, datosActualizar, { new: true});
         return heroeActualizado;
     }
+
+    async eliminarPorId(id){
+        const heroeEliminado = await SuperHero.findByIdAndDelete(id);
+        console.log(heroeEliminado);
+        return heroeEliminado;
+    }
+
+    async eliminarPorNombre(nombre){
+        const heroeEliminado = await SuperHero.findOneAndDelete({ nombreSuperHeroe: nombre });
+        console.log(heroeEliminado);
+        return heroeEliminado;
+    }
 }
 
 export default new SuperHeroRepository();

@@ -17,11 +17,21 @@ export async function obtenerSuperheroesMayoresDe30() {
 }
 //cargado de la logica de negocios valida que los datos tengan el tipo de dato nesesario en caso contrario lo transforma
 
-// Sprint-3
+// Sprint-3 crear
 export async function crearNuevoSuperheroe(datosNuevoSuperheroe) {
     return await SuperHeroRepository.crearSuperheroe(datosNuevoSuperheroe);
 }
 
+// actualizar a Kirshnerista
 export async function actualizarSuperheroe(id, datosActualizaeSuperheroe) {
     return await SuperHeroRepository.actualizarHeroe(id, datosActualizaeSuperheroe);
+}
+
+// eliminar por Id
+export async function eliminarSuperheroePorId(id) {
+    return await SuperHeroRepository.eliminarPorId(id);
+}
+//eliminar por nombre
+export async function eliminarSuperheroePorNombre(nombre) {
+    return await SuperHeroRepository.eliminarPorNombre(nombre);
 }

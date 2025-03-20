@@ -7,7 +7,9 @@ import {
     buscarSuperheroesPorAtributoController,
     obtenerSuperheroesMayoresDe30Controller,
     crearNuevoSuperheroeController,
-    actualizarSuperheroeController
+    actualizarSuperheroeController,
+    eliminarSuperheroePorIdController, 
+    eliminarSuperheroePorNombreController
 } from '../controllers/superheroesController.mjs';
 
 const router = express.Router();
@@ -20,6 +22,7 @@ router.get('/heroes/buscar/mayores-30', obtenerSuperheroesMayoresDe30Controller)
 router.post('/heroes/crear', crearNuevoSuperheroeController);
 // Sprint 3 
  router.put('/heroes/actualizar/:id', actualizarSuperheroeController); 
+ router.delete('/heroes/eliminar/id/:id', eliminarSuperheroePorIdController); 
+ router.delete('/heroes/eliminar/nombre/:nombre', eliminarSuperheroePorNombreController); 
 // Se cambia la ruta de heroes por que al ser la busqueda por cascada toma el id y no llega a mayores-30
-
 export default router;
