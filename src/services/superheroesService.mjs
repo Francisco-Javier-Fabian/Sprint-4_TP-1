@@ -16,3 +16,12 @@ export async function obtenerSuperheroesMayoresDe30() {
     return await SuperHeroRepository.obtenerMayoresDe30();
 }
 //cargado de la logica de negocios valida que los datos tengan el tipo de dato nesesario en caso contrario lo transforma
+
+// Sprint-3
+export async function crearNuevoSuperheroe(datosNuevoSuperheroe) {
+    return await SuperHeroRepository.crearSuperheroe(datosNuevoSuperheroe);
+}
+
+export async function actualizarSuperheroe(id, datosActualizaeSuperheroe) {
+    return await SuperHeroRepository.actualizarHeroe(id, datosActualizaeSuperheroe);
+}

@@ -15,5 +15,28 @@ class SuperHeroRepository extends IRepository {
         return await SuperHero.find({ edad: { $gt: 30}});
         // return await SuperHero.find(hero  => hero.edad > 30)
     }
+    // Sprint 3
+    async crearSuperheroe(datosSuperheroe) {
+
+
+            /* SuperHero.create(datosSuperheroe);
+            const superheroeCreado = await SuperHero.find({ nombreSuperHeroe: datosSuperheroe.nombreSuperHeroe });
+    
+            console.log(Superheroe: ${superheroeCreado});
+            return superheroeCreado; */
+    
+            const nuevoHeroe = new SuperHero(datosSuperheroe);
+            return await nuevoHeroe.save();
+  
+    }   
+    
+// Actualizamos el superheroe
+    async actualizarHeroe(id, datosActualizar){
+        /* updateOne() o updateMany() devuelven el resultado de la operación pero no el documento actualizado
+        y findByIdAndUpdate() devuelve el documento actualizado */
+        const heroeActualizado =  await SuperHero.findByIdAndUpdate( id, datosActualizar, { new: true});
+        return heroeActualizado;
+    }
 }
+
 export default new SuperHeroRepository();
