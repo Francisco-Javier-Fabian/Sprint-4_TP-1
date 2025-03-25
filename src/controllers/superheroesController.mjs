@@ -23,8 +23,9 @@ export async function obtenerTodosLosSuperheroesController(req, res) {
     try {
         const superheroes = await obtenerTodosLosSuperheroes();
 
+        res.render('dashboard', { superheroes });        
         const superheroesFormateados = renderizarListasSuperheroes(superheroes);
-        res.status(200).json(superheroesFormateados);
+        // res.status(200).json(superheroesFormateados);
     } catch (error) {
         res.status(500).send({ mensaje: 'Error al obtener los superheroes', error: error.message });
     }
