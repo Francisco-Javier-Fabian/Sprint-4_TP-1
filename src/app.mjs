@@ -19,6 +19,15 @@ app.set('view engine', 'ejs');
 //Middleware para parsear JSON
 app.use(express.json());
 
+// Para procesar datos del formulario
+app.use(express.urlencoded({ extended: true }));
+// El formulario está enviando datos en formato application/x-www-form-urlencoded por defecto.
+
+app.use((req, res, next) => {
+    console.log(`[${req.method}] ${req.url}`);
+    next();
+});
+
 // Conexion mongodb
 connectDB();
 
