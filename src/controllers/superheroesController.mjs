@@ -64,19 +64,26 @@ export async function crearNuevoSuperheroeController(req, res) {
     try {
 
         const datos = req.body;
-        const superheroeCreado = await crearNuevoSuperheroe(datos);
 
+        const superheroeCreado = await crearNuevoSuperheroe(datos);
         if (!superheroeCreado) {
-            return res.status(404).send({ mensaje: 'No se encuentra superheroe nuevo' });
+            return res.status(404).send({ mensaje: 'Superhéroe nuevo no encontrado' });
         }
 
+        res.render('addSuperhero', { successMessage: '¡Superhéroe creado exitosamente!' });
+
         const superheroeFormateado = renderizarSuperheroe(superheroeCreado);
-        res.status(200).json(superheroeFormateado);
+        //res.status(200).json(superheroeFormateado);
 
     } catch (error) {
-        res.status(500).send({ mensaje: 'Error al obtener un nuevo super heroe', error: error.message });
+        //res.status(500).render('addSuperhero', { errorMessage: error.message });
+        res.render('addSuperhero', {
+            errorMessage: 'Hubo un error al crear el superhéroe. Asegúrate de completar todos los campos correctamente.'
+        });
     }
 }
+    
+
 
 // actualizar SuperHeroeController
 export async function  actualizarSuperheroeController(req, res){

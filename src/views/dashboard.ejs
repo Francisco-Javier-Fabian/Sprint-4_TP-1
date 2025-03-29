@@ -1,24 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Superheroes</title>
-</head>
-<body>
-    <h2>Lista de Superheroes</h2>
-    <ul>
+    <head>
+        <meta charset="UTF-8">
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Superheroes</title>
+    </head>
+    <body class="bg-slate-800 text-white font-serif">
+        <h2 class="">Lista de Superheroes</h2>
+      
+   <table class="border-2"> 
+    <thead>
+        <tr>
+            <th>Superheroes:</th>
+            <th>Nombre Real:</th>
+            <th>Edad:</th>
+            <th>Planeta de Origen:</th>
+            <th>Debilidad:</th>
+            <th>Poderes:</th>
+            <th>Aliados:</th>
+            <th>Enemigos:</th>
+        </tr>
+    </thead>
+    <tbody>
         <% superheroes.forEach(superheroe => { %>
-            <li>Superheroe: <%= superheroe.nombreSuperHeroe %></li>
-            <li>Nombre Real: <%= superheroe.nombreReal %></li>
-            <li>Edad: <%= superheroe.edad %></li>
-            <li>Planeta Origen: <%= superheroe.planetaOrigen %></li>
-            <li>Debilidad: <%= superheroe.debilidad %></li>
-            <li>Poderes: <%= superheroe.poderes %></li>
-            <li>Aliados: <%= superheroe.aliados %></li>
-            <li>Enemigos: <%= superheroe.enemigos %></li>
-            <br>
+            <tr>
+            <td><%= superheroe.nombreSuperHeroe %></td>
+            <td><%= superheroe.nombreReal %></td>
+            <td><%= superheroe.edad %></td>
+            <td><%= superheroe.planetaOrigen %></td>
+            <td><%= superheroe.debilidad %></td>
+            <td><%= superheroe.poderes %></td>
+            <td><%= superheroe.aliados %></td>
+            <td><%= superheroe.enemigos %></td>
+            </tr>
         <%})%>
-    </ul>
+    </tbody>
+</table>
+
 </body>
 </html>

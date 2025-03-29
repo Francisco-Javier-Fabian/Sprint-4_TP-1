@@ -5,21 +5,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <title>Listas con super heroes agregados </title>
+    <title>Listas con super heroes Editados </title>
 </head>
-<body class="bg-slate-800 text-slate-300">
-    <!-- Mostrar mensajes de exito si se ha pasado desde el backend -->
+<body class="bg-slate-800 text-slate-300 m-3 p-2">
 
-   <% if (typeof successMessage !== "undefined" && successMessage) { %>
-        <div id="mensajeExitoso" class="text-lg text-[#008000] bg-[#e0ffe0] text-center m-auto p-3">
-            <%= successMessage %>
-            <button type="button" onclick="this.parentElement.classList.add('hidden')" class="absolute top-0 right-4">x</button>
-        </div>
-    <% } %>
+<h2 class="text-white text-center text-xl mx-auto m-[2rem]">Edicion de Superheroes</h2>
 
-<h2 class="text-white text-center text-xl mx-auto m-[2rem]">Crear Superheroes</h2>
-
-    <form action="/api/heroes/agregar" method="POST" class="mx-auto">
+    <form action="/" method="PUT" class="mx-auto">
 
     
         <!--              Nombre Del Superheroe               -->
@@ -110,13 +102,9 @@
         <!--                       boton                        -->
     
         <button type="submit"
-            class="block m-auto mt-10 w-[50rem] h-10 text-white bg-blue-700 hover:bg-blue-500 hover:cursor-pointer focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg focus:outline-none" onclick="console.log('Botón presionado');">Crear SuperHeroes</button>
+            class="block m-auto mt-10 w-[50rem] h-10 text-white bg-blue-700 hover:bg-blue-500 hover:cursor-pointer focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg focus:outline-none" onclick="console.log('Botón presionado');">Actualizar SuperHeroes</button>
     
         </form>
-  
-
-
-
 
 </body>
 
