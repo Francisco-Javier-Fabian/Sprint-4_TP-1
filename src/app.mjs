@@ -3,6 +3,7 @@ import { connectDB } from './config/dbConfig.mjs';
 import superHeroRoutes from './routes/superHeroRoutes.mjs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import methodOverride from "method-override";
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -23,15 +24,33 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // El formulario está enviando datos en formato application/x-www-form-urlencoded por defecto.
 
+// 📂 Servir archivos estáticos desde la carpeta "public"
+//app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public'))); // Carpeta para imágenes
+app.set('view engine', 'ejs'); // Configurar EJS como motor de plantillas
+
+app.get('/', (req, res) => {
+    const imagePath = '/images/madara.jpg'; // Ruta relativa en 'public'
+    res.render('index', { imagePath });
+});
+// aqui
+
+
+// middleware de registro de peticiones (para depuraciones)
 app.use((req, res, next) => {
     console.log(`[${req.method}] ${req.url}`);
     next();
 });
 
+// Configuración de method-override
+app.use(methodOverride("_method"));
+
+
 // Conexion mongodb
 connectDB();
 
-//configuracion de rutas
+
+//configuracion de rutas para la api
 app.use('/api', superHeroRoutes);
 
 //Manejo de errores para rutas no encontradas

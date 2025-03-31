@@ -31,15 +31,14 @@ router.delete('/heroes/eliminar/id/:id', eliminarSuperheroePorIdController);
 router.delete('/heroes/eliminar/nombre/:nombre', eliminarSuperheroePorNombreController);
 
 /* Spring 3 - TP3 */
-// Renderizar vistas
+// Renderizar vistas 
+// vista editar heroe
 router.get("/view/agregar", (req, res) => {
     res.render("addSuperhero"); // Renderiza views/addSuperhero.ejs
 });
 
-router.get("/view/editar", (req, res) => {
-    res.render("editSuperhero"); // Renderiza views/editSuperhero.ejs
-});
-
-
+// Vista editar heroe
+router.get("/view/editar/:id", obtenerSuperheroePorIdController);
+ // obtiene el superhero mediante el controlador y precarga los datos en el form
 
 export default router;

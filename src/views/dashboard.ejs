@@ -2,37 +2,66 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Superheroes</title>
     </head>
+
+    <!-- * tareas Limpiar formulario al crear usuario
+     * ver devolucion de los campos de usuarios
+     * masaje de error no se puede actualizar o crear Superhero
+     * checkear botones de de inicio y lista de superheroes
+     * mover las tetas
+     * mejorar el front de dashboard
+      -->
+    
     <body class="bg-slate-800 text-white font-serif">
         <h2 class="">Lista de Superheroes</h2>
       
-   <table class="border-2"> 
+         
+   <table border="2" cellspacing="0" cellspadding="10" width="100%"> 
     <thead>
         <tr>
-            <th>Superheroes:</th>
-            <th>Nombre Real:</th>
-            <th>Edad:</th>
-            <th>Planeta de Origen:</th>
-            <th>Debilidad:</th>
-            <th>Poderes:</th>
-            <th>Aliados:</th>
-            <th>Enemigos:</th>
+            <th class="border-2">Superheroes:</th>
+            <th class="border-2">Nombre Real:</th>
+            <th class="border-2">Edad:</th>
+            <th class="border-2">Planeta de Origen:</th>
+            <th class="border-2">Debilidad:</th>
+            <th class="border-2">Poderes:</th>
+            <th class="border-2">Aliados:</th>
+            <th class="border-2">Enemigos:</th>
+            <th>acciones</th>
         </tr>
     </thead>
     <tbody>
         <% superheroes.forEach(superheroe => { %>
             <tr>
-            <td><%= superheroe.nombreSuperHeroe %></td>
-            <td><%= superheroe.nombreReal %></td>
-            <td><%= superheroe.edad %></td>
-            <td><%= superheroe.planetaOrigen %></td>
-            <td><%= superheroe.debilidad %></td>
-            <td><%= superheroe.poderes %></td>
-            <td><%= superheroe.aliados %></td>
-            <td><%= superheroe.enemigos %></td>
+            <td class="border-2"><%= superheroe.nombreSuperHeroe %></td>
+            <td class="border-2"><%= superheroe.nombreReal %></td>
+            <td class="border-2"><%= superheroe.edad %></td>
+            <td class="border-2"><%= superheroe.planetaOrigen %></td>
+            <td class="border-2"><%= superheroe.debilidad %></td>
+            <td>
+                <% superheroe.poderes.forEach(poder => { %>
+                   <li><%= poder %></li>
+                <% }) %>
+            </td>
+            <td>
+                <% superheroe.aliados.forEach(aliado => { %>
+                    <li><%= aliado %></li>
+                <% }) %>
+            </td>
+            <td>
+                <% superheroe.enemigos.forEach(enemigo => { %>
+                    <li><%= enemigo %></li>
+                <% }) %>
+            </td>
+            <td>
+                <button type="button" onclick="window.location.href='/api/view/editar/<%= superheroe._id %>'">Editar</button>
+                <br>
+                <br>
+                <button type="button">Eliminar</button>
+            </td>
             </tr>
         <%})%>
     </tbody>

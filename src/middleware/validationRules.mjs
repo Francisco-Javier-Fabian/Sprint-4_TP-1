@@ -45,7 +45,7 @@ export const validationDataSuperHeros = () => [
         .isLength({ min: 3, max: 60 }).withMessage('Nombre real debe tener entre 3 y 60 caracteres'),
 
     body('edad')
-       // .exists()
+        // .exists()
         .trim()
         .notEmpty().withMessage('Edad es requerida')
         .isNumeric().withMessage("La edad debe ser un número")

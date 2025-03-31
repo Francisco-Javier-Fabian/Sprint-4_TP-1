@@ -7,105 +7,118 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <title>Listas con super heroes Editados </title>
 </head>
-<body class="bg-slate-800 text-slate-300 m-3 p-2">
 
-<h2 class="text-white text-center text-xl mx-auto m-[2rem]">Edicion de Superheroes</h2>
+<body class="bg-slate-800 text-slate-300">
 
-    <form action="/" method="PUT" class="mx-auto">
+      <!-- Mostrar mensajes de exito si se ha pasado desde el backend -->
 
-    
+   <% if (typeof successMessage !== "undefined" && successMessage) { %>
+    <div id="mensajeExitoso" class="text-lg text-[#008000] bg-[#e0ffe0] text-center m-auto p-3">
+        <%= successMessage %>
+        <button type="button" onclick="this.parentElement.classList.add('hidden')" class="absolute top-0 right-4">x</button>
+    </div>
+<% } %>
+
+
+    <h2 class="text-white text-center text-xl mx-auto m-[2rem]">Edicion de Superheroes</h2>
+
+    <form action="/api/heroes/editar/<%= superheroe._id %>?_method=PUT" method="POST" class="mx-auto">
+        <input type="hidden" name="_method" value="PUT">
+
         <!--              Nombre Del Superheroe               -->
         <div class="relative z-0 w-[50rem] m-auto mb-5 group">
-            <input type="text" id="nombreSuperHeroe" name="nombreSuperHeroe"
+            <input type="text" id="nombreSuperHeroe" name="nombreSuperHeroe" value="<%= superheroe.nombreSuperHeroe %>"
                 class="block py-2.5 px-0 w-full text-sm text-gray-400 bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" " min="3" max="60" required />
             <label for="nombreSuperHeroe"
                 class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre
                 del Superheroe:</label>
         </div>
-    
+
         <!--                  Nombre real                     -->
         <div class="relative z-0 w-[50rem] m-auto mb-5 group">
-            <input type="text" id="nombreReal" name="nombreReal"
+            <input type="text" id="nombreReal" name="nombreReal" value="<%= superheroe.nombreReal %>"
                 class="block py-2.5 px-0 w-full text-sm text-gray-400 bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" " min="3" max="60" required />
             <label for="nombreReal"
                 class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nombre
                 real del Superheroe:</label>
         </div>
-    
+
         <!--                   Edad                            -->
         <div class="relative z-0 w-[50rem] m-auto mb-5 group">
-            <input type="number" id="edad" name="edad" onkeydown="return !['e', 'E', '+', '-'].includes(event.key)"
+            <input type="number" id="edad" name="edad" value="<%= superheroe.edad %>"
+                onkeydown="return !['e', 'E', '+', '-'].includes(event.key)"
                 class="block py-2.5 px-0 w-full text-sm text-gray-400 bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" " min="0" required />
             <label for="edad"
                 class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Edad:</label>
         </div>
-    
+
         <!--               Planeta de Origen                -->
         <div class="relative z-0 w-[50rem] m-auto mb-5 group">
-            <input type="text" id="planetaOrigen" name="planetaOrigen"
+            <input type="text" id="planetaOrigen" name="planetaOrigen" value="<%= superheroe.planetaOrigen %>"
                 class="block py-2.5 px-0 w-full text-sm text-gray-400 bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                 placeholder=" " required />
             <label for="planetaOrigen"
                 class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Planeta
                 de Origen:</label>
         </div>
-    
+
         <!--                      Debilidad                      -->
         <div class="relative z-0 w-[50rem] m-auto mb-5 group">
-            <input type="text" id="debilidad" name="debilidad"
+            <input type="text" id="debilidad" name="debilidad" value="<%= superheroe.debilidad %>"
                 class="block py-2.5 px-0 w-full text-sm text-gray-400 bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer placeholder:invisible focus:placeholder:visible"
                 placeholder="no pongas kriptonita, por favor " required />
             <label for="debilidad"
                 class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Debilidad:</label>
         </div>
-    
+
         <!--                   Poderes                           -->
         <div class="relative z-0 w-[50rem] m-auto mb-5 group">
-            <input type="text" id="poderes" name="poderes"
+            <input type="text" id="poderes" name="poderes" value="<%= superheroe.poderes.join(', ') %>"
                 class="block py-2.5 px-0 w-full text-sm text-gray-400 bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer placeholder:invisible focus:placeholder:visible"
                 placeholder="Ej: poder uno, poder dos " required />
             <label for="poderes"
                 class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Poderes:
                 (separar por comas) </label>
         </div>
-    
+
         <!--                      Aliados                      -->
         <div class="relative z-0 w-[50rem] m-auto mb-5 group">
-            <input type="text" id="aliados" name="aliados"
+            <input type="text" id="aliados" name="aliados" value="<%= superheroe.aliados.join(', ') %>"
                 class="block py-2.5 px-0 w-full text-sm text-gray-400 bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer placeholder:invisible focus:placeholder:visible"
                 placeholder="Ej: eso que no tenes, aliado2, etc " required />
             <label for="aliados"
                 class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Aliados:</label>
         </div>
-    
+
         <!--                      Enemigos                       -->
         <div class="relative z-0 w-[50rem] m-auto mb-5 group">
-            <input type="text" id="enemigos" name="enemigos"
+            <input type="text" id="enemigos" name="enemigos" value="<%= superheroe.enemigos.join(', ') %>"
                 class="block py-2.5 px-0 w-full text-sm text-gray-400 bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer placeholder:invisible focus:placeholder:visible"
                 placeholder="Ej: enemigo1, enemigo2, etc " required />
             <label for="enemigos"
                 class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Enemigos:</label>
         </div>
-    
+
         <!--                        Creador                     -->
         <div class="relative z-0 w-[50rem] m-auto mb-5 group">
-            <input type="text" id="creador" name="creador"
-                class="block py-2.5 px-0 w-full text-sm text-gray-400 bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer placeholder:invisible focus:placeholder:visible"  
+            <input type="text" id="creador" name="creador" value="<%= superheroe.creador %>"
+                class="block py-2.5 px-0 w-full text-sm text-gray-400 bg-transparent border-0 border-b-2 border-gray-400 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer placeholder:invisible focus:placeholder:visible"
                 placeholder="Tu nombre menso" required />
             <label for="creador"
                 class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Creador:</label>
         </div>
-    
+
         <!--                       boton                        -->
-    
+
         <button type="submit"
-            class="block m-auto mt-10 w-[50rem] h-10 text-white bg-blue-700 hover:bg-blue-500 hover:cursor-pointer focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg focus:outline-none" onclick="console.log('Botón presionado');">Actualizar SuperHeroes</button>
-    
-        </form>
+            class="block m-auto mt-10 w-[50rem] h-10 text-white bg-blue-700 hover:bg-blue-500 hover:cursor-pointer focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-lg focus:outline-none"
+            onclick="console.log('Botón presionado');">Editar SuperHeroes</button>
+
+    </form>
 
 </body>
 
-</html> 
+</html>

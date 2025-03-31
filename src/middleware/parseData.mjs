@@ -4,7 +4,13 @@ export const parseSuperheroData = (req, res, next) => {
 
     if (typeof req.body.poderes == 'string') {
         req.body.poderes = req.body.poderes.trim().split(',').map(poder => poder.trim());
-        console.log(req.body.poderes);
+
+        const contieneNumero = req.body.poderes.some(poder => /\d/.test(poder));
+
+        if (contieneNumero) {
+            return res.status(400).json({ error: "Los poderes no deben contener números." });
+        }
+        // console.log(req.body.poderes);
     }
     
     if (typeof req.body.aliados == 'string') {
