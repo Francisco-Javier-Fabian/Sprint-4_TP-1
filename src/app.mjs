@@ -45,6 +45,7 @@ app.use((req, res, next) => {
 // Configuración de method-override
 app.use(methodOverride("_method"));
 
+app.use(express.static(path.join(__dirname, "public")));
 
 // Conexion mongodb
 connectDB();

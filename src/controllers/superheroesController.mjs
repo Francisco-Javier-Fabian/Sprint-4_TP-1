@@ -71,7 +71,8 @@ export async function crearNuevoSuperheroeController(req, res) {
             return res.status(404).send({ mensaje: 'Superhéroe nuevo no encontrado' });
         }
 
-        res.render('addSuperhero', { successMessage: '¡Superhéroe creado exitosamente!' });
+        const superheroesActualizados = await obtenerTodosLosSuperheroes();
+        res.render('dashboard', { superheroes: superheroesActualizados ,successMessage: '¡Superhéroe creado exitosamente!, me copian el codigo..' })
 
         // const superheroeFormateado = renderizarSuperheroe(superheroeCreado);
         //res.status(200).json(superheroeFormateado);
@@ -100,7 +101,9 @@ export async function actualizarSuperheroeController(req, res) {
         if (!superheroeActualizado) {
             return res.status(404).send({ mensaje: 'El super heroe a actualizar no se ha encontrado' });
         }
-        res.render('editSuperhero', { superheroe: superheroeActualizado, successMessage: '¡Superhéroe editado exitosamente!' });
+        const superheroesActualizados = await obtenerTodosLosSuperheroes();
+        res.render('dashboard', { superheroes: superheroesActualizados ,successMessage: '¡Superhéroe eliminado exitosamente!, me copian el codigo..' })
+        
         
         // const superheroeFormateado = renderizarSuperheroe(superheroeActualizado);
         // res.status(200).json(superheroeFormateado);
@@ -114,15 +117,15 @@ export async function eliminarSuperheroePorIdController(req, res) {
     try {
         const { id } = req.params;
 
-        console.log(id);
-        console.log(typeof (id));
-
         const superheroeEliminado = await eliminarSuperheroePorId(id);
         if (!superheroeEliminado) {
             return res.status(404).send({ mensaje: 'El superheroe no se encuentra para eliminar por Id..' });
         }
-        const superheroeFormateado = renderizarSuperheroe(superheroeEliminado);
-        res.status(200).json(superheroeFormateado);
+
+        const superheroeActualizados = await obtenerTodosLosSuperheroes();
+        res.render('dashboard', { superheroes: superheroeActualizados ,successMessage: '¡Superhéroe eliminado exitosamente!, me copian el codigo..' })
+        // const superheroeFormateado = renderizarSuperheroe(superheroeEliminado);
+        // res.status(200).json(superheroeFormateado);
 
     } catch (error) {
         res.status(500).send({ mensaje: 'Error al eliminar el superheroe por ID', error: error.message });
