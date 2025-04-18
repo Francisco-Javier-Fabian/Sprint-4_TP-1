@@ -18,7 +18,6 @@ class SuperHeroRepository extends IRepository {
     // Sprint 3
     async crearSuperheroe(datosSuperheroe) {
 
-
             /* SuperHero.create(datosSuperheroe);
             const superheroeCreado = await SuperHero.find({ nombreSuperHeroe: datosSuperheroe.nombreSuperHeroe });
     
@@ -26,8 +25,7 @@ class SuperHeroRepository extends IRepository {
             return superheroeCreado; */
     
             const nuevoHeroe = new SuperHero(datosSuperheroe);
-            return await nuevoHeroe.save();
-  
+            return await nuevoHeroe.save();  
     }   
     
 // Actualizamos el superheroe
