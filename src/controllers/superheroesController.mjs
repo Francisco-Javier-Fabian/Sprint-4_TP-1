@@ -12,7 +12,7 @@ export async function obtenerSuperheroePorIdController(req, res) {
             return res.status(404).send({ mensaje: 'Superheroe no encontrado' });
         }
 
-        res.render("editSuperhero", { superheroe });
+        res.render("editSuperhero", { superheroe, title: 'Mi mama me mima' });
         // const superheroeFormateado = renderizarSuperheroe(superheroe);
         // res.status(200).json(superheroeFormateado);
     } catch (error) {
@@ -24,7 +24,9 @@ export async function obtenerTodosLosSuperheroesController(req, res) {
     try {
         const superheroes = await obtenerTodosLosSuperheroes();
 
-        res.render('dashboard', { superheroes });
+        res.render('dashboard', { superheroes, title: 'SuperHeroes' });
+        //en lugar de renderizar la vista dashboard, se procesa y ejs-layout intercepta para renderizar layout incrustando dashboard en body 
+        //ejs layout intercepta, incrusta el archivo dashboard en body dentro de layout y renderiza layout // lo mismo que el anterior pero de otra forma asi lo entendes bruto         
         // const superheroesFormateados = renderizarListasSuperheroes(superheroes);
         // res.status(200).json(superheroesFormateados);
     } catch (error) {
@@ -102,7 +104,7 @@ export async function actualizarSuperheroeController(req, res) {
             return res.status(404).send({ mensaje: 'El super heroe a actualizar no se ha encontrado' });
         }
         const superheroesActualizados = await obtenerTodosLosSuperheroes();
-        res.render('dashboard', { superheroes: superheroesActualizados ,successMessage: '¡Superhéroe eliminado exitosamente!, me copian el codigo..' })
+        res.render('dashboard', { superheroes: superheroesActualizados ,successMessage: '¡Superhéroe eliminado exitosamente!, me copian el codigo..', title: 'SuperHeroes Politicamente Incorrectos' });
         
         
         // const superheroeFormateado = renderizarSuperheroe(superheroeActualizado);
@@ -123,7 +125,7 @@ export async function eliminarSuperheroePorIdController(req, res) {
         }
 
         const superheroeActualizados = await obtenerTodosLosSuperheroes();
-        res.render('dashboard', { superheroes: superheroeActualizados ,successMessage: '¡Superhéroe eliminado exitosamente!, me copian el codigo..' })
+        res.render('dashboard', { superheroes: superheroeActualizados ,successMessage: '¡Superhéroe eliminado exitosamente!, me copian el codigo..', title: 'Eliminar superHeroe' })
         // const superheroeFormateado = renderizarSuperheroe(superheroeEliminado);
         // res.status(200).json(superheroeFormateado);
 

@@ -4,6 +4,7 @@ import superHeroRoutes from './routes/superHeroRoutes.mjs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import methodOverride from "method-override";
+import expressEjsLayouts from 'express-ejs-layouts';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,9 +14,14 @@ const PORT = process.env.PORT || 3000;
 /* Convierte la URL del módulo en una ruta de archivo (fileURLToPath(import.meta.url))
 y obtiene el directorio del archivo actual (path.dirname(...)) */
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+app.set('view engine', 'ejs');
 /* Forma la ruta absoluta hacia views/, sin importar desde dónde se ejecute el script. */
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+
+//configurar express-ejs-layouts
+app.use(expressEjsLayouts);
+app.set('layout', 'layout'); // archivo base del layout
 
 //Middleware para parsear JSON
 app.use(express.json());
@@ -61,5 +67,5 @@ app.use((req, res) => {
 
 // Iniciar el servidor
 app.listen(PORT, () => {
-    console.log(`Servidor escuchado en el puerto ${PORT}`);
+    console.log(`Servidor ejecutándose en http://localhost:${PORT}/api/heroes`);
 });

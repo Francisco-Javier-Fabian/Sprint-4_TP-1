@@ -14,11 +14,12 @@ import {
 import { validationDataSuperHeros } from '../middleware/validationRules.mjs';
 import { handleValidationErrors } from '../middleware/errorMiddleware.mjs';
 import { parseSuperheroData } from '../middleware/parseData.mjs';
+import { title } from 'process';
 
 const router = express.Router();
 
 
-router.get('/heroes', obtenerTodosLosSuperheroesController);
+router.get('/heroes/lista', obtenerTodosLosSuperheroesController);
 router.get('/heroes/:id', obtenerSuperheroePorIdController);
 router.get('/heroes/buscar/:atributo/:valor', buscarSuperheroesPorAtributoController);
 router.get('/heroes/buscar/mayores-30', obtenerSuperheroesMayoresDe30Controller);
@@ -30,11 +31,18 @@ router.put('/heroes/editar/:id', parseSuperheroData, validationDataSuperHeros(),
 router.delete('/heroes/eliminar/id/:id', eliminarSuperheroePorIdController);
 router.delete('/heroes/eliminar/nombre/:nombre', eliminarSuperheroePorNombreController);
 
+
 /* Spring 3 - TP3 */
-// Renderizar vistas 
+// Renderizar vistas
+// Sprint 4 
+
+router.get("/heroes", (req, res) => {
+    res.render("index", {title: 'Index'});
+});
+
 // vista editar heroe
 router.get("/view/agregar", (req, res) => {
-    res.render("addSuperhero"); // Renderiza views/addSuperhero.ejs
+    res.render("addSuperhero", {title: 'SuperHeroes'}); // Renderiza views/addSuperhero.ejs
 });
 
 // Vista editar heroe
