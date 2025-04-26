@@ -74,7 +74,7 @@ export async function crearNuevoSuperheroeController(req, res) {
         }
 
         const superheroesActualizados = await obtenerTodosLosSuperheroes();
-        res.render('dashboard', { superheroes: superheroesActualizados ,successMessage: '¡Superhéroe creado exitosamente!, me copian el codigo..' })
+        res.render('dashboard', { superheroes: superheroesActualizados ,successMessage: '¡Superhéroe creado exitosamente!, me copian el codigo..', title: 'SuperHeroes Agregados' })
 
         // const superheroeFormateado = renderizarSuperheroe(superheroeCreado);
         //res.status(200).json(superheroeFormateado);

@@ -37,7 +37,7 @@ app.set('view engine', 'ejs'); // Configurar EJS como motor de plantillas
 
 app.get('/', (req, res) => {
     const imagePath = '/images/madara.jpg'; // Ruta relativa en 'public'
-    res.render('index', { imagePath });
+    res.render('index', { imagePath, title:'Inicio'});
 });
 // aqui
 
