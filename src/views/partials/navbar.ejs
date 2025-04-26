@@ -1,24 +1,29 @@
-<nav class="stroke-lime-700">
-    <div class="navbar">
+<nav class="w-full h-18 text-slate-300 text-lg">
+    <div
+        class="bg-gradient-to-r from-slate-900 to-sky-950  from border-b border-slate-700 flex fixed w-full h-18 justify-between items-center text-center">
         <a href="/">
-            <img src="/images/logo.png" alt="Logo" class="logo">
+            <img src="/images/logo.png" alt="Logo" class="w-12 h-12 ml-14">
         </a>
+        <ul class="flex gap-14 mr-14">
+            <li class="flex hover:text-slate-100 hover:cursor-pointer">
+                <img src="/icons/MdiLightHome.png" alt="inicio" class="w-7 h-7">
+                <a href="/api/heroes">
+                    Home
+                </a>
+            </li>
+            <li class="flex hover:text-slate-100 hover:cursor-pointer">
+                <img src="/icons/MiAdd.png" alt="agregar" class="w-7 h-7">
+                <a href="/api/view/agregar">
+                    Add Heroes
+                </a>
+            </li>
+            <li class="flex hover:text-slate-100 hover:cursor-pointer">
+                <img src="/icons/MaterialSymbolsLightListAltOutline.png" alt="List" class="w-7 h-7">
+                <a href="/api/heroes/lista">
+                    Super list
+                </a>
+            </li>
+        </ul>
     </div>
-  <ul>
-    <li>
-        <a href="/api/heroes">
-        Grande De Muzza
-        </a>
-   </li>
-    <li>
-        <a href="/api/view/agregar">
-        Agregar Heroes
-        </a>
-   </li>
-   <li>
-    <a href="/api/heroes/lista">
-    Lista de SuperHeroes
-    </a>
-</li>
-  </ul>
+
 </nav>
